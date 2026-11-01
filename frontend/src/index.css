@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+font-family: 'Inter', sans-serif;
+color: #f8fafc;
+background: #080d1a;
+font-synthesis: none;
+text-rendering: optimizeLegibility;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+min-width: 320px;
+min-height: 100vh;
+background: #080d1a;
+color: #f8fafc;
+}
+
+body::before {
+content: "";
+position: fixed;
+inset: -50%;
+z-index: -1;
+background:
+radial-gradient(circle at 20% 25%, #153e75 0, transparent 30%),
+radial-gradient(circle at 80% 20%, #44216c 0, transparent 30%),
+radial-gradient(circle at 50% 80%, #064e4b 0, transparent 30%);
+filter: blur(50px);
+animation: backgroundMove 16s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove {
+0% {
+transform: translate(-3%, -2%) rotate(0deg);
+}
+100% {
+transform: translate(3%, 2%) rotate(8deg);
+}
+}
+
+button,
+input,
+select,
+textarea {
+font: inherit;
+}
+
+button {
+cursor: pointer;
+}
+
+a {
+color: inherit;
+text-decoration: none;
+}
+
+.container {
+width: min(1200px, 92%);
+margin: 0 auto;
+}
+
+.glass-card {
+background: rgba(15, 23, 42, 0.72);
+border: 1px solid rgba(148, 163, 184, 0.18);
+border-radius: 20px;
+padding: 24px;
+box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+backdrop-filter: blur(18px);
+}
+
+.page-center {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 24px 0;
+}
+
+.auth-card {
+width: min(440px, 92vw);
+}
+
+.brand {
+font-size: 27px;
+font-weight: 800;
+letter-spacing: -1px;
+margin-bottom: 8px;
+}
+
+.brand span {
+color: #38bdf8;
+}
+
+.muted {
+color: #94a3b8;
+line-height: 1.6;
+}
+
+.form-group {
+margin-top: 18px;
+}
+
+.form-group label {
+display: block;
+margin-bottom: 8px;
+font-size: 14px;
+color: #cbd5e1;
+}
+
+.input,
+.select,
+.textarea {
+width: 100%;
+padding: 12px 14px;
+background: rgba(2, 6, 23, 0.7);
+border: 1px solid #334155;
+border-radius: 10px;
+color: #f8fafc;
+outline: none;
+transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+border-color: #38bdf8;
+box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.select option {
+background: #0f172a;
+}
+
+.btn {
+border: 0;
+border-radius: 10px;
+padding: 12px 18px;
+background: linear-gradient(135deg, #0ea5e9, #6366f1);
+color: white;
+font-weight: 700;
+transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+transform: translateY(-2px);
+opacity: 0.92;
+}
+
+.btn:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+transform: none;
+}
+
+.btn-full {
+width: 100%;
+margin-top: 22px;
+}
+
+.error-message {
+margin-top: 14px;
+padding: 10px 12px;
+color: #fecaca;
+background: rgba(127, 29, 29, 0.3);
+border: 1px solid rgba(248, 113, 113, 0.3);
+border-radius: 9px;
+font-size: 14px;
+}
+
+.success-message {
+margin-top: 14px;
+color: #86efac;
+font-size: 14px;
+}
+
+.auth-footer {
+text-align: center;
+margin-top: 22px;
+font-size: 14px;
+color: #94a3b8;
+}
+
+.auth-footer a {
+color: #38bdf8;
+font-weight: 700;
+}
+
+.navbar {
+position: sticky;
+top: 0;
+z-index: 10;
+background: rgba(8, 13, 26, 0.85);
+border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+backdrop-filter: blur(20px);
+}
+
+.navbar-inner {
+min-height: 76px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+}
+
+.navbar-actions {
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.dashboard {
+padding-top: 35px;
+padding-bottom: 50px;
+}
+
+.dashboard-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 18px;
+margin-bottom: 28px;
+}
+
+.dashboard-title {
+font-size: clamp(25px, 4vw, 36px);
+margin-bottom: 8px;
+}
+
+.summary-grid {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 18px;
+margin-bottom: 25px;
+}
+
+.summary-card h3 {
+color: #94a3b8;
+font-size: 14px;
+font-weight: 500;
+margin-bottom: 14px;
+}
+
+.summary-amount {
+font-size: clamp(23px, 3vw, 32px);
+font-weight: 800;
+overflow-wrap: anywhere;
+}
+
+.income-color {
+color: #4ade80;
+}
+
+.expense-color {
+color: #fb7185;
+}
+
+.balance-color {
+color: #38bdf8;
+}
+
+.dashboard-grid {
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+gap: 22px;
+margin-bottom: 22px;
+}
+
+.section-title {
+font-size: 19px;
+margin-bottom: 20px;
+}
+
+.transaction-list {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.transaction-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 14px;
+padding: 14px;
+background: rgba(30, 41, 59, 0.45);
+border: 1px solid rgba(148, 163, 184, 0.12);
+border-radius: 12px;
+}
+
+.transaction-info {
+min-width: 0;
+}
+
+.transaction-info h4 {
+overflow-wrap: anywhere;
+margin-bottom: 5px;
+}
+
+.transaction-info p {
+color: #94a3b8;
+font-size: 12px;
+overflow-wrap: anywhere;
+}
+
+.transaction-actions {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.icon-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+background: transparent;
+border: 1px solid #334155;
+color: #cbd5e1;
+padding: 8px;
+border-radius: 8px;
+}
+
+.icon-btn:hover {
+color: #38bdf8;
+border-color: #38bdf8;
+}
+
+.delete-btn:hover {
+color: #fb7185;
+border-color: #fb7185;
+}
+
+.empty-state {
+padding: 25px 10px;
+text-align: center;
+color: #94a3b8;
+}
+
+.form-grid {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 0 14px;
+}
+
+.form-grid .form-group {
+min-width: 0;
+}
+
+.form-grid .full-width {
+grid-column: 1 / -1;
+}
+
+.filter-row {
+display: flex;
+gap: 12px;
+flex-wrap: wrap;
+margin-bottom: 18px;
+}
+
+.filter-row > * {
+flex: 1;
+min-width: 140px;
+}
+
+.chart-container {
+width: 100%;
+height: 280px;
+}
+
+.loading {
+padding: 40px 10px;
+text-align: center;
+color: #94a3b8;
+}
+
+@media (max-width: 800px) {
+.dashboard-grid {
+grid-template-columns: 1fr;
+}
+
+.summary-grid {
+grid-template-columns: 1fr;
+}
+}
+
+@media (max-width: 520px) {
+.glass-card {
+padding: 18px;
+}
+
+.navbar-inner {
+min-height: 68px;
+}
+
+.navbar-actions {
+gap: 8px;
+}
+
+.dashboard-header {
+align-items: flex-start;
+flex-direction: column;
+}
+
+.form-grid {
+grid-template-columns: 1fr;
+}
+
+.form-grid .full-width {
+grid-column: auto;
+}
+
+.transaction-item {
+align-items: flex-start;
+}
+}
