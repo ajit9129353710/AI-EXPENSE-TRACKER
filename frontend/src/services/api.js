@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ai-expense-tracker-ttwt.onrender.com",
+  baseURL: "https://ai-expense-tracker-ttwt.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
