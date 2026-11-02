@@ -1,15 +1,23 @@
-import'./AIChat.css';
+import "./AIChat.css";
 import { useState } from "react";
-import { MessageCircle, Send, Bot, User, LoaderCircle } from "lucide-react";
+import {
+  MessageCircle,
+  Send,
+  Bot,
+  User,
+  LoaderCircle,
+} from "lucide-react";
 
 function AIChat({ income = 0, expenses = 0, balance = 0 }) {
   const [question, setQuestion] = useState("");
+
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       text: "Hi! 👋 I'm your ExpenseFlow AI Assistant. Ask me about your income, expenses, savings, or budget.",
     },
   ]);
+
   const [loading, setLoading] = useState(false);
 
   const handleSend = async (e) => {
@@ -35,15 +43,18 @@ function AIChat({ income = 0, expenses = 0, balance = 0 }) {
       }
 
       const apiBase = (
-        import.meta.env.VITE_API_URL || "http://localhost:5000/api"
+        import.meta.env.VITE_API_URL ||
+        "https://ai-expense-tracker-ttwt.onrender.com/api"
       ).replace(/\/$/, "");
 
       const response = await fetch(`${apiBase}/ai/chat`, {
         method: "POST",
+
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+
         body: JSON.stringify({
           question: userQuestion,
           income,
@@ -51,6 +62,14 @@ function AIChat({ income = 0, expenses = 0, balance = 0 }) {
           balance,
         }),
       });
+
+      const contentType = response.headers.get("content-type") || "";
+
+      if (!contentType.includes("application/json")) {
+        throw new Error(
+          "Server JSON response नहीं भेज रहा है। Backend API URL या route में समस्या है।"
+        );
+      }
 
       const data = await response.json();
 
@@ -96,7 +115,9 @@ function AIChat({ income = 0, expenses = 0, balance = 0 }) {
           <div
             key={index}
             className={`ai-message ${
-              message.role === "user" ? "user-message" : "assistant-message"
+              message.role === "user"
+                ? "user-message"
+                : "assistant-message"
             }`}
           >
             <span className="ai-message-icon">
